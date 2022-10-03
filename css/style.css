@@ -1,0 +1,24 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+  background: rgb(163, 115, 115);
+  color: rgb(0, 0, 0);
+  font-family: Copperplate, Papyrus, fantasy;
+  padding: 0;
+  margin: 12px;
+}
+
+h1 {
+  font-size: 52px;
+  text-align: center;
+}
+
+p {
+  font-size: 22px;
+  text-align: center;
+  padding: 12px;
+}
