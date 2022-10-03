@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Raegan's Hangman Game</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/app.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1>HANGMAN</h1>
+      <p>
+        Guess the secret word by clicking on the letters in the alphabet below.
+        If that letter is in the secret word, it will appear in the appropriate
+        blank! If the letter is not in the word, a body part will be added to
+        the gallows! Keep guessing letters until you can solve the secret word
+        or your man is hung!
+      </p>
+    </div>
+
+    <div>
+      <canvas id="stickman"></canvas>
+    </div>
+
+    <div class="container">
+      <div id="buttons"></div>
+    </div>
+    <div>
+      <p id="lives">You have ${lives} lives remaining</p>
+    </div>
+    <div class="wrapper">
+      <button id="reset">Play Again</button>
+    </div>
+  </body>
+</html>
