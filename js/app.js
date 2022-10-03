@@ -49,3 +49,13 @@ const words = [
   "constructor",
   "instantiate",
 ];
+
+let answer = "";
+let maxWrong = 6;
+let wrong = 6;
+
+function generateWord() {
+  answer = words[Math.floor(Math.random() * words.length)];
+}
+
+generateWord();
