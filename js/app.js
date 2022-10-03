@@ -26,3 +26,26 @@ const alphabet = [
   "y",
   "z",
 ];
+
+const words = [
+  "javascript",
+  "callback",
+  "functions",
+  "github",
+  "markdown",
+  "terminal",
+  "repository",
+  "undefined",
+  "stylesheet",
+  "element",
+  "variable",
+  "flexbox",
+  "browser",
+  "iterator",
+  "method",
+  "console",
+  "devtools",
+  "attribute",
+  "constructor",
+  "instantiate",
+];
