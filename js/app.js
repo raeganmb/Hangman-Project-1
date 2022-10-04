@@ -58,4 +58,8 @@ function generateWord() {
   answer = words[Math.floor(Math.random() * words.length)];
 }
 
+function guessedWord() {
+
+}
+
 generateWord();
