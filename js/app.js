@@ -32,7 +32,7 @@ function generateWord() {
   for (let idx = 0; idx < answer.length; idx++) {
     let space = document.createElement("div");
     space.setAttribute("id", idx);
-    space.innerHTML = " __ ";
+    space.innerHTML = " ___ ";
     console.log(space);
 
     secretWord.appendChild(space);
