@@ -46,13 +46,15 @@ function handleClick(evt) {
   console.log(evt.target);
 }
 
-let letters = document.querySelectorAll('li');
-let lettersArr = Array.from(letters);
-console.log(letters)
+let btns = document.querySelectorAll("button");
+let btnsArr = Array.from(btns);
+console.log(btnsArr);
 
-
-
-
+for (let btn of btnsArr) {
+  btn.addEventListener("click", function handleClick(event) {
+    console.log("button clicked", event);
+  });
+}
 
 // Create alphabet in HTML, style it
 // on load, use loop to add event listeners to list items
