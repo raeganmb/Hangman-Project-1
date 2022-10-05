@@ -1,32 +1,3 @@
-const alphabet = [
-  "a",
-  "b",
-  "c",
-  "d",
-  "e",
-  "f",
-  "g",
-  "h",
-  "i",
-  "j",
-  "k",
-  "l",
-  "m",
-  "n",
-  "o",
-  "p",
-  "q",
-  "r",
-  "s",
-  "t",
-  "u",
-  "v",
-  "w",
-  "x",
-  "y",
-  "z",
-];
-
 const words = [
   "javascript",
   "callback",
@@ -50,16 +21,57 @@ const words = [
   "instantiate",
 ];
 
+// ***GENERATE SECRET WORD
+
+const secretWord = document.querySelector("#word");
 let answer = "";
-let maxWrong = 6;
-let wrong = 6;
 
 function generateWord() {
   answer = words[Math.floor(Math.random() * words.length)];
-}
+  console.log(answer);
+  for (let idx = 0; idx < answer.length; idx++) {
+    let space = document.createElement("div");
+    space.setAttribute("id", idx);
+    space.innerHTML = " __ ";
+    console.log(space);
 
-function guessedWord() {
-
+    secretWord.appendChild(space);
+  }
+  console.log(secretWord);
 }
 
 generateWord();
+
+function handleClick(evt) {
+  console.log(evt.target);
+}
+
+let letters = document.querySelectorAll('li');
+let lettersArr = Array.from(letters);
+console.log(letters)
+
+
+
+
+
+// Create alphabet in HTML, style it
+// on load, use loop to add event listeners to list items
+// handleClick event listen to grab e.target.textContent
+
+// guessedWord();
+
+// ***ALPHABET BUTTONS
+
+// alphabet.forEach(element=> {
+//     let btn = document.createElement('button');
+//     btn.keyboard = element;
+//     document.appendChild(btn);
+// })
+
+// function generateButtons(alphabet) {
+//     for(let i = 0; i < alphabet.length; i++) {
+// container.append('<button>' + alphabet[i] + '</button>');
+//     }
+// }
+
+// generateButtons();
