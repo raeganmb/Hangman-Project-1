@@ -21,7 +21,15 @@ const words = [
   "instantiate",
 ];
 
-// ***GENERATE SECRET WORD
+const imgs = [
+  "assets/img00.jpg",
+  "assets/img01.jpg",
+  "assets/img02.jpg",
+  "assets/img03.jpg",
+  "assets/img04.jpg",
+  "assets/img05.jpg",
+  "assets/img06.jpg",
+];
 
 const secretWord = document.querySelector("#word");
 let answer = "";
@@ -32,48 +40,67 @@ function generateWord() {
   for (let idx = 0; idx < answer.length; idx++) {
     let space = document.createElement("div");
     space.setAttribute("id", idx);
-    space.innerHTML = " ___ ";
-    console.log(space);
+    space.innerHTML = " __ ";
+    // console.log(space);
 
     secretWord.appendChild(space);
   }
-  console.log(secretWord);
+  //   console.log(secretWord);
 }
 
 generateWord();
 
-function handleClick(evt) {
-  console.log(evt.target);
+function generateImg() {
+  let img = document.createElement("img");
+  img.src = "assets/img00.jpg";
+  let src = document.getElementById("stickman");
+  src.appendChild(img);
 }
+
+//   for (let idx = 0; idx < imgs.length; idx++) {
+//     stickman.setAttribute("id", idx);
+//   }
+//   console.log(stickman);
+// }
+
+generateImg();
+
+function handleClick(evt) {}
 
 let btns = document.querySelectorAll("button");
 let btnsArr = Array.from(btns);
-console.log(btnsArr);
+// console.log(btnsArr);
 
 for (let btn of btnsArr) {
-  btn.addEventListener("click", function handleClick(event) {
-    console.log("button clicked", event);
-  });
+  btn.addEventListener("click", handleClick);
 }
 
-// Create alphabet in HTML, style it
-// on load, use loop to add event listeners to list items
-// handleClick event listen to grab e.target.textContent
+//
 
-// guessedWord();
+const playAgain = document.querySelector("#reset");
+let livesRemaining = document.querySelector("#wrong");
 
-// ***ALPHABET BUTTONS
+playAgain.addEventListener("click", reset);
 
-// alphabet.forEach(element=> {
-//     let btn = document.createElement('button');
-//     btn.keyboard = element;
-//     document.appendChild(btn);
-// })
+function reset() {}
+reset();
 
-// function generateButtons(alphabet) {
-//     for(let i = 0; i < alphabet.length; i++) {
-// container.append('<button>' + alphabet[i] + '</button>');
-//     }
+// function checkForLetter(answer) {
+// let guessedLetter = [];
+// for (let idx = 0; idx <= answer.length; idx++) {
+//     if (letter === answer)
 // }
+// }
+// function checkForWin() {}
 
-// generateButtons();
+//check for win, if win return "You win!", else return "You lose! Click Play Again!"
+
+//onClick, loop through "answer" for truthy elements,
+//push element into " __ " element.  If no truthy element,
+//change img (p id="stickman") and lives remaining
+//(span id="wrong") = -1
+
+//add event listener for play again button (id = reset),
+//onClick generate img1 and generate new secret word
+
+// handleClick event listen to grab e.target.textContent ?
