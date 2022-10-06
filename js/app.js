@@ -22,7 +22,6 @@ const words = [
 ];
 
 const imgs = [
-  "assets/img00.jpg",
   "assets/img01.jpg",
   "assets/img02.jpg",
   "assets/img03.jpg",
@@ -47,12 +46,13 @@ const secretWord = document.querySelector("#word");
 let answer = "";
 
 function generateWord() {
-  answer = words[Math.floor(Math.random() * words.length)];
+  answer = words[Math.floor(Math.random() * words.length)].toUpperCase();
   console.log(answer);
   for (let idx = 0; idx < answer.length; idx++) {
     let space = document.createElement("div");
-    space.setAttribute("id", idx);
-    space.innerHTML = " __ ";
+    let spaceIdx = "s" + idx;
+    space.setAttribute("id", spaceIdx);
+    space.setAttribute("class", "letter");
     // console.log(space);
     secretWord.appendChild(space);
   }
@@ -61,28 +61,53 @@ generateWord();
 
 // KEYBOARD CLICK EVENT/EVENT HANDLER
 
-function handleClick(evt) {}
-
 let btns = document.querySelectorAll("button");
 let btnsArr = Array.from(btns);
-// console.log(btnsArr);
 
 for (let btn of btnsArr) {
   btn.addEventListener("click", handleClick);
 }
 
-// let index = words.indexOf(' __ ');
+let winCounter = 0;
+let livesRemaining = 6;
+let livesVal = document.getElementById("wrong");
+livesVal.textContent = livesRemaining;
 
-// if (index !== -1) {
+function handleClick(evt) {
+  console.log(evt.target);
+  console.log(answer);
 
-// }
-// console.log(words)
-// 
+  if (answer.includes(evt.target.textContent)) {
+    for (let idx = 0; idx < answer.length; idx++) {
+      // console.log(answer[idx], "triggered");
+      if (evt.target.textContent === answer[idx]) {
+        let secretDiv = "s" + idx;
+        let letter = document.getElementById(secretDiv);
+        letter.textContent = evt.target.textContent;
+        winCounter++;
+      }
+    }
+  } else {
+    console.log(imgs);
+    livesRemaining--;
+    livesVal.textContent = livesRemaining;
+    let img1 = document.querySelector("img");
+    img1.remove();
+    let img2 = document.createElement("img");
+    img2.src = imgs[0];
+    let src = document.getElementById("stickman");
+    src.appendChild(img2);
+    imgs.shift();
+    console.log(imgs);
+  }
+  if (winCounter === answer.length) {
+    console.log("win!");
+  }
+}
 
-// RESET BUTTON (initialize)
+// RESET BUTTON
 
 const playAgain = document.querySelector("#reset");
-let livesRemaining = document.querySelector("#wrong");
 
 playAgain.addEventListener("click", reset);
 
