@@ -31,6 +31,18 @@ const imgs = [
   "assets/img06.jpg",
 ];
 
+// GENERATE IMAGE
+
+function generateImg() {
+  let img = document.createElement("img");
+  img.src = "assets/img00.jpg";
+  let src = document.getElementById("stickman");
+  src.appendChild(img);
+}
+generateImg();
+
+//GENERATE SECRET WORD
+
 const secretWord = document.querySelector("#word");
 let answer = "";
 
@@ -42,28 +54,12 @@ function generateWord() {
     space.setAttribute("id", idx);
     space.innerHTML = " __ ";
     // console.log(space);
-
     secretWord.appendChild(space);
   }
-  //   console.log(secretWord);
 }
-
 generateWord();
 
-function generateImg() {
-  let img = document.createElement("img");
-  img.src = "assets/img00.jpg";
-  let src = document.getElementById("stickman");
-  src.appendChild(img);
-}
-
-//   for (let idx = 0; idx < imgs.length; idx++) {
-//     stickman.setAttribute("id", idx);
-//   }
-//   console.log(stickman);
-// }
-
-generateImg();
+// KEYBOARD CLICK EVENT/EVENT HANDLER
 
 function handleClick(evt) {}
 
@@ -75,14 +71,24 @@ for (let btn of btnsArr) {
   btn.addEventListener("click", handleClick);
 }
 
-//
+// let index = words.indexOf(' __ ');
+
+// if (index !== -1) {
+
+// }
+// console.log(words)
+// 
+
+// RESET BUTTON (initialize)
 
 const playAgain = document.querySelector("#reset");
 let livesRemaining = document.querySelector("#wrong");
 
 playAgain.addEventListener("click", reset);
 
-function reset() {}
+function reset() {
+  //back to onLoad state
+}
 reset();
 
 // function checkForLetter(answer) {
