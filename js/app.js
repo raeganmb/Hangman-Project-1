@@ -114,28 +114,27 @@ function handleClick(evt) {
 
 // RESET BUTTON
 
-// const playAgain = document.querySelector("#reset");
-// playAgain.addEventListener("click", reset);
+const playAgain = document.querySelector("#reset");
+playAgain.addEventListener("click", reset);
 
-// function reset(evt) {
-//   imgs = [
-//     "assets/img01.jpg",
-//     "assets/img02.jpg",
-//     "assets/img03.jpg",
-//     "assets/img04.jpg",
-//     "assets/img05.jpg",
-//     "assets/img06.jpg",
-//   ];
-//   let img1 = document.querySelector("img");
-//   img1.remove();
-//   let img2 = document.createElement("img");
-//   img2.src = imgs[0];
-//   let src = document.getElementById("stickman");
-//   src.appendChild(img2);
-//   imgs.shift();
-// }
-
-// reset();
+function reset(evt) {
+    let livesRemaining = 6;
+    let livesVal = document.getElementById("wrong");
+    livesVal.textContent = livesRemaining;
+    imgs = [
+    "assets/img01.jpg",
+    "assets/img02.jpg",
+    "assets/img03.jpg",
+    "assets/img04.jpg",
+    "assets/img05.jpg",
+    "assets/img06.jpg",
+  ];
+  let img1 = document.querySelector("img");
+  img1.remove();
+  generateImg();
+  
+  generateWord();
+}
 
 //check for win, if win return "You win!", else return "You lose! Click Play Again!"
 
