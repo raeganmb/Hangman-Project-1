@@ -21,7 +21,7 @@ const words = [
   "instantiate",
 ];
 
-const imgs = [
+let imgs = [
   "assets/img01.jpg",
   "assets/img02.jpg",
   "assets/img03.jpg",
@@ -76,62 +76,67 @@ livesVal.textContent = livesRemaining;
 function handleClick(evt) {
   console.log(evt.target);
   console.log(answer);
-
-  if (answer.includes(evt.target.textContent)) {
-    for (let idx = 0; idx < answer.length; idx++) {
-      // console.log(answer[idx], "triggered");
-      if (evt.target.textContent === answer[idx]) {
-        let secretDiv = "s" + idx;
-        let letter = document.getElementById(secretDiv);
-        letter.textContent = evt.target.textContent;
-        winCounter++;
+  0;
+  if (evt.target.id != "reset") {
+    if (answer.includes(evt.target.textContent)) {
+      for (let idx = 0; idx < answer.length; idx++) {
+        // console.log(answer[idx], "triggered");
+        if (evt.target.textContent === answer[idx]) {
+          let secretDiv = "s" + idx;
+          let letter = document.getElementById(secretDiv);
+          letter.textContent = evt.target.textContent;
+          winCounter++;
+        }
       }
+    } else {
+      console.log(imgs);
+      livesRemaining--;
+      livesVal.textContent = livesRemaining;
+      let img1 = document.querySelector("img");
+      img1.remove();
+      let img2 = document.createElement("img");
+      img2.src = imgs[0];
+      let src = document.getElementById("stickman");
+      src.appendChild(img2);
+      imgs.shift();
+      console.log(imgs);
     }
-  } else {
-    console.log(imgs);
-    livesRemaining--;
-    livesVal.textContent = livesRemaining;
-    let img1 = document.querySelector("img");
-    img1.remove();
-    let img2 = document.createElement("img");
-    img2.src = imgs[0];
-    let src = document.getElementById("stickman");
-    src.appendChild(img2);
-    imgs.shift();
-    console.log(imgs);
-  }
-  if (winCounter === answer.length) {
-    console.log("win!");
+    if (winCounter === answer.length) {
+      btnsArr.forEach((btn) => {
+        if (btn.id != "reset") btn.disabled = true;
+      });
+    }
+    if (livesRemaining === 0) {
+    }
+    evt.target.disabled = true;
   }
 }
 
 // RESET BUTTON
 
-const playAgain = document.querySelector("#reset");
+// const playAgain = document.querySelector("#reset");
+// playAgain.addEventListener("click", reset);
 
-playAgain.addEventListener("click", reset);
-
-function reset() {
-  //back to onLoad state
-}
-reset();
-
-// function checkForLetter(answer) {
-// let guessedLetter = [];
-// for (let idx = 0; idx <= answer.length; idx++) {
-//     if (letter === answer)
+// function reset(evt) {
+//   imgs = [
+//     "assets/img01.jpg",
+//     "assets/img02.jpg",
+//     "assets/img03.jpg",
+//     "assets/img04.jpg",
+//     "assets/img05.jpg",
+//     "assets/img06.jpg",
+//   ];
+//   let img1 = document.querySelector("img");
+//   img1.remove();
+//   let img2 = document.createElement("img");
+//   img2.src = imgs[0];
+//   let src = document.getElementById("stickman");
+//   src.appendChild(img2);
+//   imgs.shift();
 // }
-// }
-// function checkForWin() {}
+
+// reset();
 
 //check for win, if win return "You win!", else return "You lose! Click Play Again!"
 
 //onClick, loop through "answer" for truthy elements,
-//push element into " __ " element.  If no truthy element,
-//change img (p id="stickman") and lives remaining
-//(span id="wrong") = -1
-
-//add event listener for play again button (id = reset),
-//onClick generate img1 and generate new secret word
-
-// handleClick event listen to grab e.target.textContent ?
