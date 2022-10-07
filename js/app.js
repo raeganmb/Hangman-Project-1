@@ -67,7 +67,6 @@ for (let btn of btnsArr) {
 }
 
 function handleClick(evt) {
-  0;
   if (evt.target.id != "reset") {
     if (answer.includes(evt.target.textContent)) {
       for (let idx = 0; idx < answer.length; idx++) {
@@ -89,23 +88,21 @@ function handleClick(evt) {
       src.appendChild(img2);
       imgs.shift();
     }
-    if (winCounter === answer.length) {
-      btnsArr.forEach((btn) => {
-        if (btn.id != "reset") btn.disabled = true;
-      });
-    }
-    if (livesRemaining === 0) {
-    }
+
     evt.target.disabled = true;
   }
+  checkForWin();
+  checkForLoss();
 }
 
 playAgain.addEventListener("click", reset);
 
 function reset(evt) {
   livesRemaining = 6;
-  let livesVal = document.getElementById("wrong");
-  livesVal.textContent = livesRemaining;
+  let livesVal = document.getElementById("lives");
+  livesVal.textContent = `Lives Remaining:`;
+  let wrong = document.getElementById("wrong");
+  wrong.innerText = livesRemaining;
   imgs = [
     "assets/img01.jpg",
     "assets/img02.jpg",
@@ -120,19 +117,35 @@ function reset(evt) {
 
   btnsArr.forEach((btn) => {
     btn.disabled = false;
-
-    //  secretWord.remove();
-    //  let resetWord = document.createElement("div");
-    //  generateWord(resetWord);
   });
+
+  let spaces = document.querySelectorAll(".letter");
+  for (let idx = 0; idx < spaces.length; idx++) {
+    spaces[idx].remove();
+  }
+  generateWord();
 }
 
 function checkForWin() {
   if (winCounter === answer.length) {
-    let winner = document.querySelector("#lives");
-    winner.remove();
+    let removeText = document.querySelector("#lives");
+    removeText.textContent = "You win!";
+    let removeWrong = document.getElementById("wrong");
+    removeWrong.textContent = "";
+    btnsArr.forEach((btn) => {
+      if (btn.id != "reset") btn.disabled = true;
+    });
   }
-  return `You win!!`;
 }
 
-function checkForLoss() {}
+function checkForLoss() {
+  if (livesRemaining === 0) {
+    let removeText = document.querySelector("#lives");
+    removeText.textContent = "You lose!";
+    let removeWrong = document.getElementById("wrong");
+    removeWrong.textContent = "";
+    btnsArr.forEach((btn) => {
+      if (btn.id != "reset") btn.disabled = true;
+    });
+  }
+}
