@@ -30,7 +30,15 @@ let imgs = [
   "assets/img06.jpg",
 ];
 
-// GENERATE IMAGE
+const secretWord = document.querySelector("#word");
+const playAgain = document.querySelector("#reset");
+let answer = "";
+let btns = document.querySelectorAll("button");
+let btnsArr = Array.from(btns);
+let winCounter = 0;
+let livesRemaining = 6;
+let livesVal = document.getElementById("wrong");
+livesVal.textContent = livesRemaining;
 
 function generateImg() {
   let img = document.createElement("img");
@@ -40,11 +48,6 @@ function generateImg() {
 }
 generateImg();
 
-//GENERATE SECRET WORD
-
-const secretWord = document.querySelector("#word");
-let answer = "";
-
 function generateWord() {
   answer = words[Math.floor(Math.random() * words.length)].toUpperCase();
   console.log(answer);
@@ -53,34 +56,21 @@ function generateWord() {
     let spaceIdx = "s" + idx;
     space.setAttribute("id", spaceIdx);
     space.setAttribute("class", "letter");
-    // console.log(space);
+
     secretWord.appendChild(space);
   }
 }
 generateWord();
 
-// KEYBOARD CLICK EVENT/EVENT HANDLER
-
-let btns = document.querySelectorAll("button");
-let btnsArr = Array.from(btns);
-
 for (let btn of btnsArr) {
   btn.addEventListener("click", handleClick);
 }
 
-let winCounter = 0;
-let livesRemaining = 6;
-let livesVal = document.getElementById("wrong");
-livesVal.textContent = livesRemaining;
-
 function handleClick(evt) {
-  console.log(evt.target);
-  console.log(answer);
   0;
   if (evt.target.id != "reset") {
     if (answer.includes(evt.target.textContent)) {
       for (let idx = 0; idx < answer.length; idx++) {
-        // console.log(answer[idx], "triggered");
         if (evt.target.textContent === answer[idx]) {
           let secretDiv = "s" + idx;
           let letter = document.getElementById(secretDiv);
@@ -89,7 +79,6 @@ function handleClick(evt) {
         }
       }
     } else {
-      console.log(imgs);
       livesRemaining--;
       livesVal.textContent = livesRemaining;
       let img1 = document.querySelector("img");
@@ -99,7 +88,6 @@ function handleClick(evt) {
       let src = document.getElementById("stickman");
       src.appendChild(img2);
       imgs.shift();
-      console.log(imgs);
     }
     if (winCounter === answer.length) {
       btnsArr.forEach((btn) => {
@@ -112,9 +100,6 @@ function handleClick(evt) {
   }
 }
 
-// RESET BUTTON
-
-const playAgain = document.querySelector("#reset");
 playAgain.addEventListener("click", reset);
 
 function reset(evt) {
@@ -136,19 +121,18 @@ function reset(evt) {
   btnsArr.forEach((btn) => {
     btn.disabled = false;
 
-document.querySelectorAll
+    //  secretWord.remove();
+    //  let resetWord = document.createElement("div");
+    //  generateWord(resetWord);
   });
 }
 
-
 function checkForWin() {
-if (winCounter === answer.length){
-let winner = document.querySelector("#lives");
-winner.remove();
+  if (winCounter === answer.length) {
+    let winner = document.querySelector("#lives");
+    winner.remove();
+  }
+  return `You win!!`;
 }
-return(`You win!!`)
-} 
 
-function checkForLoss() {
-
-}
+function checkForLoss() {}
