@@ -71,6 +71,16 @@ img {
 } */
 
 .letter {
-    border-bottom: solid black 2px;
-    width: 0.8rem;
+  border-bottom: solid black 2px;
+  width: 0.8rem;
+}
+
+#reset {
+  background-color: antiquewhite;
+  color: rgb(114, 54, 9);
+  font-family: Copperplate, Papyrus, fantasy;
+  font-size: 20px;
+  border-radius: 5px;
+  width: 150px;
+  height: 50px;
 }

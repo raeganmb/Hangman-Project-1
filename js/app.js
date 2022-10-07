@@ -118,10 +118,10 @@ const playAgain = document.querySelector("#reset");
 playAgain.addEventListener("click", reset);
 
 function reset(evt) {
-    let livesRemaining = 6;
-    let livesVal = document.getElementById("wrong");
-    livesVal.textContent = livesRemaining;
-    imgs = [
+  livesRemaining = 6;
+  let livesVal = document.getElementById("wrong");
+  livesVal.textContent = livesRemaining;
+  imgs = [
     "assets/img01.jpg",
     "assets/img02.jpg",
     "assets/img03.jpg",
@@ -132,10 +132,23 @@ function reset(evt) {
   let img1 = document.querySelector("img");
   img1.remove();
   generateImg();
-  
-  generateWord();
+
+  btnsArr.forEach((btn) => {
+    btn.disabled = false;
+
+document.querySelectorAll
+  });
 }
 
-//check for win, if win return "You win!", else return "You lose! Click Play Again!"
 
-//onClick, loop through "answer" for truthy elements,
+function checkForWin() {
+if (winCounter === answer.length){
+let winner = document.querySelector("#lives");
+winner.remove();
+}
+return(`You win!!`)
+} 
+
+function checkForLoss() {
+
+}
