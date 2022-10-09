@@ -39,18 +39,17 @@ let winCounter = 0;
 let livesRemaining = 6;
 let livesVal = document.getElementById("wrong");
 livesVal.textContent = livesRemaining;
-let img = document.createElement("img");
-let src = document.getElementById("stickman");
 
 function generateImg() {
+  let img = document.createElement("img");
   img.src = "assets/img00.jpg";
+  let src = document.getElementById("stickman");
   src.appendChild(img);
 }
 generateImg();
 
 function generateWord() {
   answer = words[Math.floor(Math.random() * words.length)].toUpperCase();
-  console.log(answer);
   for (let idx = 0; idx < answer.length; idx++) {
     let space = document.createElement("div");
     let spaceIdx = "s" + idx;
@@ -88,7 +87,6 @@ function handleClick(evt) {
       src.appendChild(img2);
       imgs.shift();
     }
-
     evt.target.disabled = true;
   }
   checkForWin();
