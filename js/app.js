@@ -39,11 +39,11 @@ let winCounter = 0;
 let livesRemaining = 6;
 let livesVal = document.getElementById("wrong");
 livesVal.textContent = livesRemaining;
+let img = document.createElement("img");
+let src = document.getElementById("stickman");
 
 function generateImg() {
-  let img = document.createElement("img");
   img.src = "assets/img00.jpg";
-  let src = document.getElementById("stickman");
   src.appendChild(img);
 }
 generateImg();
