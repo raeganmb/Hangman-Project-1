@@ -98,6 +98,7 @@ playAgain.addEventListener("click", reset);
 function reset(evt) {
   livesRemaining = 6;
   let livesVal = document.getElementById("lives");
+  winCounter = 0;
   livesVal.textContent = `Lives Remaining:`;
   let wrong = document.getElementById("wrong");
   wrong.innerText = livesRemaining;

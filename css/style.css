@@ -40,10 +40,14 @@ img {
 .wrapper2,
 #word {
   display: flex;
-  flex-direction: row;
   justify-content: space-evenly;
-  align-items: center;
+  align-items: flex-end;
   gap: 10px;
+}
+
+#word {
+  text-align:center;
+  margin-bottom: 5rem;
 }
 
 .lives-wrapper,
