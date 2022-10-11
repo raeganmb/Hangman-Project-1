@@ -15,7 +15,7 @@ Figure 1
 
 Figure 2
 
-<img src="assets/figure02,jpg" width="900">
+<img src="assets/figure02.jpg" width="900">
 
 Figure 3 
 
